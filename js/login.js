@@ -9,5 +9,6 @@ function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     localStorage.setItem("email", profile.getEmail());
     localStorage.setItem("name", profile.getName());
+    alert(profile.getEmail());
     document.location.href = "index.html";
   }
