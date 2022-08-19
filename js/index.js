@@ -1,6 +1,6 @@
 function login(){
-        if(document.getElementById("login").text === "Salir"){
-        localStorage.setItem("email", null);
+        if(sesion === '1'){
+        localStorage.setItem("sesion", 0);
         window.location = "index.html";
         }
         else{
@@ -25,9 +25,10 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 const email = localStorage.getItem("email");
+const sesion = localStorage.getItem("sesion");
 const nombre = localStorage.getItem("name");
 const login_menu = document.getElementById("login_menu");
-if(email!=null && email!="null"){
+if(sesion==='1'){
     const menu = 
     `<a class="nav-link">` + nombre + `</a>
     <ul class="navbar-nav w-100 justify-content-between">
