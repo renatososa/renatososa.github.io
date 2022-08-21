@@ -1,10 +1,3 @@
-function login(){
-    var email = document.getElementById("floatingInput").value;
-    var password = document.getElementById("floatingPassword").value;
-    localStorage.setItem("sesion", 1);
-    localStorage.setItem("email", email);
-    localStorage.setItem("name", email.slice(0, 6));
-}
   var GoogleAuth;
   var SCOPE = 'https://www.googleapis.com/auth/drive.metadata.readonly';
   function handleClientLoad() {
@@ -78,3 +71,11 @@ function handleAuthClick() {
   function updateSigninStatus() {
     setSigninStatus();
   }
+
+  function login(){
+    var email = document.getElementById("floatingInput").value;
+    var password = document.getElementById("floatingPassword").value;
+    localStorage.setItem("sesion", 1);
+    localStorage.setItem("email", email);
+    localStorage.setItem("name", email.slice(0, 6));
+}

@@ -1,13 +1,3 @@
-function login(){
-        if(sesion === '1'){
-        localStorage.setItem("sesion", 0);
-        window.location = "index.html";
-        }
-        else{
-            window.location = "login.html";
-        }
-}
-
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);
@@ -23,6 +13,16 @@ document.addEventListener("DOMContentLoaded", function(){
     });
     
 });
+
+function login(){
+    if(sesion === '1'){
+    localStorage.setItem("sesion", 0);
+    window.location = "index.html";
+    }
+    else{
+        window.location = "login.html";
+    }
+}
 
 const email = localStorage.getItem("email");
 const sesion = localStorage.getItem("sesion");
