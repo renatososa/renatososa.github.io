@@ -1,30 +1,32 @@
 const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
-const ORDER_BY_PROD_COUNT = "Precio.";
+const ORDER_BY_PROD_COUNT = "Count.";
 let currentProductsArray = [];
 let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
+let search = undefined;
+let nombre = "";
 
 function sortProducts(criteria, array){
     let result = [];
     if (criteria === ORDER_ASC_BY_NAME)
     {
         result = array.sort(function(a, b) {
-            if ( a.name < b.name ){ return -1; }
-            if ( a.name > b.name ){ return 1; }
+            if ( a.cost < b.cost ){ return -1; }
+            if ( a.cost > b.cost ){ return 1; }
             return 0;
         });
     }else if (criteria === ORDER_DESC_BY_NAME){
         result = array.sort(function(a, b) {
-            if ( a.name > b.name ){ return -1; }
-            if ( a.name < b.name ){ return 1; }
+            if ( a.cost > b.cost ){ return -1; }
+            if ( a.cost < b.cost ){ return 1; }
             return 0;
         });
     }else if (criteria === ORDER_BY_PROD_COUNT){
         result = array.sort(function(a, b) {
-            let aCount = parseInt(a.cost);
-            let bCount = parseInt(b.cost);
+            let aCount = parseInt(a.soldCount);
+            let bCount = parseInt(b.soldCount);
 
             if ( aCount > bCount ){ return -1; }
             if ( aCount < bCount ){ return 1; }
@@ -41,11 +43,12 @@ let productsArray = [];
 //función que recibe un array con los datos, y los muestra en pantalla a través el uso del DOM
 function showProductsList(array){
     let htmlContentToAppend = "";
-
     for(let i = 0; i < array.length; i++){ 
         let product = array[i];
+        let nombre = product.name.toLowerCase();
         if (((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount)) &&
+            (((search == undefined) || (search != undefined && nombre.includes(search))))){
         htmlContentToAppend += `
         <div class="list-group-item list-group-item-action">
             <div class="row">
@@ -124,6 +127,13 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         showProductsList(currentProductsArray);
     });
+    document.getElementById("clearSearch").addEventListener("click", function(){
+        document.getElementById("search").value = "";
+
+        search = undefined;
+
+        showProductsList(currentProductsArray);
+    });
 
     document.getElementById("rangeFilterCount").addEventListener("click", function(){
         //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
@@ -145,6 +155,15 @@ document.addEventListener("DOMContentLoaded", function(e){
             maxCount = undefined;
         }
 
+        showProductsList(currentProductsArray);
+    });
+    document.getElementById("searchBtn").addEventListener("click", function(){
+        //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
+        //de productos por categoría.
+        search = document.getElementById("search").value.toLowerCase();
+        if ((search === undefined) || (search === "")){
+            search = undefined;
+        }
         showProductsList(currentProductsArray);
     });
 });
