@@ -39,6 +39,10 @@ function sortProducts(criteria, array){
 
 //array donde se cargarán los datos recibidos:
 let productsArray = [];
+function setProdID(id) {
+    localStorage.setItem("prodID", id);
+    window.location = "product-info.html"
+}
 
 //función que recibe un array con los datos, y los muestra en pantalla a través el uso del DOM
 function showProductsList(array){
@@ -50,7 +54,7 @@ function showProductsList(array){
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount)) &&
             (((search == undefined) || (search != undefined && nombre.includes(search))))){
         htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action">
+        <div onclick="setProdID(${product.id})" class="list-group-item list-group-item-action">
             <div class="row">
                 <div class="col-3">
                     <img src="` + product.image + `" alt="product image" class="img-thumbnail">

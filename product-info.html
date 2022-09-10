@@ -36,11 +36,59 @@
       </div>
     </div>
   </nav>
-  <main>
+  <main role="main" class="pb-5">
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      
+      <div class="text-left p-4">
+        <h2 id="name"></h2>
       </div>
+      <hr>
+      <div class="row">
+          <strong>Precio</strong>
+          <p id="precio">
+      </div>
+      <div class="row">
+        <strong>Descripcion</strong>
+        <p id="descr">
+      </div>
+      <div class="row">
+        <strong>Categoria</strong>
+        <p id="cat">
+      </div>
+      <div class="row">
+        <strong>Cantidad de vendidos</strong>
+        <p id="soldCount">
+      </div>
+      <div class="row">
+        <strong>Imagenes ilustrativas</strong>
+        <div class="col-xs-12 col-md-12">
+          <div class="row" id="examp-list-container"></div>
+        </div>
+      </div> <br>
+      <div class="row">
+        <div class="md-form">
+        <strong>Comentarios</strong>
+        <ul class="list-group" id="contenedor">
+        </ul> 
+        <br>
+        <strong>Deja tu comentario</strong> <br>
+        <i class="fas fa-pencil-alt prefix"></i>
+        <label for="comentario">Tu opinion:</label>
+        <textarea id="comentario" class="md-textarea form-control" rows="2"></textarea>
+        <label for="puntuacion">Tu puntuacion:</label>
+        <select class="form-select" id="puntuacion" cols="2" style="width:10rem;">
+          <option value="1" selected>1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <div class="d-grid">
+          <button type="button" class="btn btn-primary my-3" id="enviar" style="width:10rem;">Enviar</button>
+        </div>
+        </div>
+      </div>
+      
     </div>
   </main>
   <footer class="text-muted">

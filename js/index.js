@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 function login(){
-    if(sesion === '1'){
+    if(localStorage.getItem("sesion") === '1'){
     localStorage.setItem("sesion", 0);
     window.location = "index.html";
     }
