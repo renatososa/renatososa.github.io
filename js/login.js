@@ -77,5 +77,5 @@ function handleAuthClick() {
     var password = document.getElementById("floatingPassword").value;
     localStorage.setItem("sesion", 1);
     localStorage.setItem("email", email);
-    localStorage.setItem("name", email.slice(0, 6));
+    localStorage.setItem("name", email.split("@")[0]);
 }
