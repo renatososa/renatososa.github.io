@@ -67,27 +67,43 @@
       </div> <br>
       <div class="row">
         <div class="md-form">
-        <strong>Comentarios</strong>
-        <ul class="list-group" id="contenedor">
-        </ul> 
-        <br>
-        <strong>Deja tu comentario</strong> <br>
-        <i class="fas fa-pencil-alt prefix"></i>
-        <label for="comentario">Tu opinion:</label>
-        <textarea id="comentario" class="md-textarea form-control" rows="2"></textarea>
-        <label for="puntuacion">Tu puntuacion:</label>
-        <select class="form-select" id="puntuacion" cols="2" style="width:10rem;">
-          <option value="1" selected>1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <div class="d-grid">
-          <button type="button" class="btn btn-primary my-3" id="enviar" style="width:10rem;">Enviar</button>
-        </div>
+          <strong>Comentarios</strong>
+          <ul class="list-group" id="contenedor">
+          </ul> 
+          <br>
+          <strong>Deja tu comentario</strong> <br>
+          <i class="fas fa-pencil-alt prefix"></i>
+          <label for="comentario">Tu opinion:</label>
+          <textarea id="comentario" class="md-textarea form-control" rows="2"></textarea>
+          <label for="puntuacion">Tu puntuacion:</label>
+          <select class="form-select" id="puntuacion" cols="2" style="width:10rem;">
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <div class="d-grid">
+            <button type="button" class="btn btn-primary my-3" id="enviar" style="width:10rem;">Enviar</button>
+          </div>
         </div>
       </div>
+      <br>
+      <h5>Productos relacionados</h5> <br>
+      <div class="d-flex justify-content-center">
+        <div id="carouselExampleDark" class="carousel carousel-dark slide col-md-5" data-bs-ride="carousel">
+          <div class="carousel-inner" id="relProd_carousel">
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+    </div>
       
     </div>
   </main>

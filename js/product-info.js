@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         {
             let product = resultObj.data;
             let examples = product.images;
+            let rel_prod = product.relatedProducts;
             document.getElementById("name").innerHTML = product.name;
             document.getElementById("precio").innerHTML = product.currency + ' ' + product.cost;
             document.getElementById("descr").innerHTML = product.description;
@@ -18,6 +19,35 @@ document.addEventListener("DOMContentLoaded", function(e){
                 `
             }
             document.getElementById("examp-list-container").innerHTML = text;
+
+            text = "";
+            let clase;
+            for(let i = 0; i < rel_prod.length; i++){
+                if (i===0) {
+                    text+=`
+                <div onclick="setProdID(${rel_prod[i].id})" class="carousel-item active cursor-active" data-bs-interval="10000">
+                    <img src=` + rel_prod[i].image + ` class="d-block w-100" alt="...">
+                    <div class="d-flex h-100 align-bottom justify-content-center bg-light">
+                    <h5>`+rel_prod[i].name+ `</h5>
+                </div>
+                </div>
+                `
+                }
+                else{
+                    text+=`
+                <div onclick="setProdID(${rel_prod[i].id})" class="carousel-item cursor-active" data-bs-interval="10000">
+                    <img src=` + rel_prod[i].image + ` class="d-block w-100" alt="...">
+                    
+                    <div class="d-flex h-100 align-bottom justify-content-center bg-light">
+                        <h5>`+rel_prod[i].name+ `</h5>
+                    </div>
+                </div>
+                `
+                }
+                
+            }
+            document.getElementById("relProd_carousel").innerHTML = text;
+
               
         }
     });
@@ -80,3 +110,8 @@ document.addEventListener("DOMContentLoaded", function(e){
 
     });
 });
+
+function setProdID(id) {
+    localStorage.setItem("prodID", id);
+    window.location = "product-info.html"
+}

@@ -56,7 +56,7 @@ function showProductsList(array){
         htmlContentToAppend += `
         <div onclick="setProdID(${product.id})" class="list-group-item list-group-item-action">
             <div class="row">
-                <div class="col-3">
+                <div class="col-3 cursor-active">
                     <img src="` + product.image + `" alt="product image" class="img-thumbnail">
                 </div>
                 <div class="col">

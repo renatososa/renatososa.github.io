@@ -30,22 +30,25 @@ const nombre = localStorage.getItem("name");
 const login_menu = document.getElementById("login_menu");
 if(sesion==='1'){
     const menu = 
-    `<a class="nav-link">` + nombre + `</a>
-    <ul class="navbar-nav w-100 justify-content-between">
-        <li class="nav-item">
-            <a class="nav-link" href="my-profile.html">Mi perfil</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" id="login" onclick="login()">Salir</a>
-        </li>
+    `<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    ` + nombre + `
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <li><a class="dropdown-item" href=""my-profile.html">Mi carrito</a></li>
+      <li><a class="dropdown-item" href=""my-profile.html">Mi perfil</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item cursor-active" id="login" onclick="login()">Salir</a></li>
     </ul>
+  </li>
+    
     `
     login_menu.innerHTML = menu;
 }
 else{
     const menu = 
     `
-    <a class="nav-link" id="login" onclick="login()">Login</a>
+    <a class="nav-link cursor-active" id="login" onclick="login()">Login</a>
     `
     login_menu.innerHTML = menu;
 }
