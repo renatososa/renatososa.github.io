@@ -29,19 +29,76 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" id="login_menu">
           </li>
         </ul>
       </div>
     </div>
   </nav>
+  
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <div class="text-center p-4">
+        <h2>Carrito de compras</h2>
       </div>
+      <h4>Artículos a comprar</h4>
+      <div class="row" id="articulos">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-2"><strong>Nombre</strong></div>
+          <div class="col-2"><strong>Costo</strong></div>
+          <div class="col-2"><strong>Cantidad</strong></div>
+          <div class="col-2"><strong>Subtotal</strong></div>
+          <div class="col-2"></div>
+        </div>
+        <hr style="height:3px;">
+      </div>
+      <br>
+      <form >
+        <h4>Tipo de envio</h4>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="premium" checked>
+          <label class="form-check-label" for="premium">
+            Premium 2 a 5 dias (15%)
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="express">
+          <label class="form-check-label" for="express">
+            Express 5 a 8 dias (7%)
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="standart">
+          <label class="form-check-label" for="standart">
+            Standart 12 a 15 dias (5%)
+          </label>
+        </div>
+        <br>
+        <h4>Dirección de envio</h4>
+        <div class="row">
+          <div class="col-6">
+            <label for="direccion">Dirección</label>
+            <input type="text" class="form-control" id="direccion" value="" name="direccion">
+          </div>
+          <div class="col-4">
+            <label for="numero">Número</label>
+            <input type="number" class="form-control" id="numero" value="" name="numero">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <label for="direccion">Esquina</label>
+            <input type="text" class="form-control" id="esquina" value="" name="esquina">
+          </div>
+        </div>
+        <br>
+        <button class="btn btn-primary btn-lg" type="submit">Finalizar</button>
+      </form>
+      <hr >
     </div>
   </main>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">

@@ -6,7 +6,6 @@ let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
 let search = undefined;
-let nombre = "";
 
 function sortProducts(criteria, array){
     let result = [];
