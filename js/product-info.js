@@ -4,22 +4,19 @@ document.addEventListener("DOMContentLoaded", function(e){
         {
             let product = resultObj.data;
             let examples = product.images;
-            let rel_prod = product.relatedProducts;
             document.getElementById("name").innerHTML = product.name;
-            document.getElementById("precio").innerHTML = product.currency + ' ' + product.cost;
-            document.getElementById("descr").innerHTML = product.description;
-            document.getElementById("cat").innerHTML = product.category;
-            document.getElementById("soldCount").innerHTML = product.soldCount;
-            let text = "";
+            document.getElementById("cost").innerHTML = product.currency + ' ' + product.cost;
+            document.getElementById("description").innerHTML = "<p> "+product.description+" </p>";
+            document.getElementById("main_product_image").src = examples[0];
+            var text = "";
             for(let i = 0; i < examples.length; i++){
-                text+=`
-                <div class="col-xs-3 col-md-3">
-                    <img src="` + examples[i] + `" alt="product image" class="img-thumbnail">
-                </div>
-                `
+                text += `
+                <li><img onclick="changeImage(this)" src="`+examples[i]+`" width="70">
+                </li>`;
             }
-            document.getElementById("examp-list-container").innerHTML = text;
+            document.getElementById("thumbnail").innerHTML = text;
 
+            let rel_prod = product.relatedProducts;
             text = "";
             let clase;
             for(let i = 0; i < rel_prod.length; i++){
@@ -72,9 +69,9 @@ document.addEventListener("DOMContentLoaded", function(e){
                     stars += `<span class="fa fa-star"></span> `
                 }
                 text+=`
-                <li  class="list-group-item"> <strong>` +comments[i].user+ `</strong> - ` +comments[i].dateTime+ ` - ` +stars+
-                `<br>` +comments[i].description+ 
-                `</li>
+                <li  class="list-group-item"> <small> <strong>` +comments[i].user+ `</strong> - ` +comments[i].dateTime+ ` - ` +stars+
+                `<br> ` +comments[i].description+ 
+                `</small></li>
                 `
             }
             document.getElementById("contenedor").innerHTML = text;
@@ -109,9 +106,58 @@ document.addEventListener("DOMContentLoaded", function(e){
         location.reload();
 
     });
-});
+    document.getElementById("buyNow").addEventListener("click", function(id){
+        if(localStorage.getItem("sesion")==='1'){
+            let cart = localStorage.getItem("cart_"+localStorage.getItem("userID"));
+            let cartArray = new Array();
+            if(cart!='null'&&cart!=null)
+            {
+                cartArray = JSON.parse(cart);
+            }
+            let item = cartArray.findIndex((elemento)=> elemento[0] === localStorage.getItem("prodID"))
+            if(item>=0){
+                cartArray[item][1] += 1;
+            }
+            else{
+                cartArray.push([localStorage.getItem("prodID"), 1]);
+            }
+            localStorage.setItem("cart_"+localStorage.getItem("userID"), JSON.stringify(cartArray));
+            window.location = "cart.html";
+        }
+        else{
+            alert("Debe ingresar con un usuario para realizar la compra");            
+        }
 
+    });
+    document.getElementById("addCart").addEventListener("click", function(id){
+        if(localStorage.getItem("sesion")==='1'){
+            let cart = localStorage.getItem("cart_"+localStorage.getItem("userID"));
+            let cartArray = new Array();
+            if(cart!='null'&&cart!=null)
+            {
+                cartArray = JSON.parse(cart);
+            }
+            let item = cartArray.findIndex((elemento)=> elemento[0] === localStorage.getItem("prodID"))
+            if(item>=0){
+                cartArray[item][1] += 1;
+            }
+            else{
+                cartArray.push([localStorage.getItem("prodID"), 1]);
+            }
+            localStorage.setItem("cart_"+localStorage.getItem("userID"), JSON.stringify(cartArray));
+            window.location.reload();
+        }
+        else{
+            alert("Debe ingresar con un usuario para realizar la compra");                                             
+        }
+
+    });
+});
+function changeImage(element) {
+    var main_prodcut_image = document.getElementById('main_product_image');
+    main_prodcut_image.src = element.src;
+}
 function setProdID(id) {
     localStorage.setItem("prodID", id);
-    window.location = "product-info.html"
+    window.location = "product-info.html"    
 }

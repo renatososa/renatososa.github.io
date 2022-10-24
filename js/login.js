@@ -39,7 +39,7 @@
     });
   }
 
-function handleAuthClick() {
+  function handleAuthClick() {
     if (GoogleAuth.isSignedIn.get()) {
          // User is authorized and has clicked "Sign out" button.
         localStorage.setItem("sesion", 0);
@@ -68,6 +68,7 @@ function handleAuthClick() {
       $('#sign-in-or-out-button').html('Ingresar con google');
     }
   }
+
   function updateSigninStatus() {
     setSigninStatus();
   }
@@ -78,4 +79,10 @@ function handleAuthClick() {
     localStorage.setItem("sesion", 1);
     localStorage.setItem("email", email);
     localStorage.setItem("name", email.split("@")[0]);
-}
+    if(email.split("@")[0] === "renato.sosast"){
+      localStorage.setItem("userID", 1);
+    }
+    else{
+      localStorage.setItem("userID", 0);
+    }
+  }
