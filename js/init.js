@@ -43,7 +43,7 @@ let getJSONData = function(url){
 function login(){
   if(localStorage.getItem("sesion") === '1'){
   localStorage.setItem("sesion", 0);
-  window.location = "index.html";
+  //window.location = "index.html";
   }
   else{
       window.location = "login.html";

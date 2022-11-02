@@ -5,6 +5,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <style>
@@ -53,15 +55,8 @@
       <button class="w-100 btn btn-lg btn-primary" type="submit" >Ingresar</button>
     </form>
     
-    <div class="row">
-      <script src="https://accounts.google.com/gsi/client" async defer></script>
-        <div id="g_id_onload"
-            data-client_id="706872584156-t2fq5l8var4jcl5es1mo3fftlrkeodni.apps.googleusercontent.com"
-            data-callback="http://127.0.0.1:5500/login.html">
-        </div>
-    <div class="g_id_signin" data-type="standard"></div>
-    </div>
-
+    <button id="sign-in-or-out-button" class="w-100 btn btn-lg btn-secondary" 
+    style="background-color: rgba(88, 178, 80, 0.805);" >Ingresar con google</button>
     <p class="mt-5 mb-3 text-muted">© 2022–2022</p>
       
 
@@ -78,6 +73,11 @@
     </div>
   </footer>
   <script src="js/login.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script async defer src="https://apis.google.com/js/api.js"
+        onload="this.onload=function(){};handleClientLoad()"
+        onreadystatechange="if (this.readyState === 'complete') this.onload()">
+  </script>
 </body>
 
 </html>
