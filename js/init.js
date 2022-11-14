@@ -6,6 +6,7 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/prod
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
+const usersURL = "https://636028deca0fe3c21aadc3f6.mockapi.io/JAPusers";
 
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
@@ -43,7 +44,7 @@ let getJSONData = function(url){
 function login(){
   if(localStorage.getItem("sesion") === '1'){
   localStorage.setItem("sesion", 0);
-  //window.location = "index.html";
+  window.location = "index.html";
   }
   else{
       window.location = "login.html";
@@ -77,4 +78,25 @@ else{
   <a class="nav-link cursor-active" id="login" onclick="login()">Login</a>
   `
   login_menu.innerHTML = menu;
+}
+
+let fetchJSONData = function(url, type){
+  let result = {};
+  return fetch(url, type)
+  .then(response => {
+    if (response.ok) 
+      return response.json();
+    else
+      throw Error(response.statusText);
+  })
+  .then(function(response) {
+        result.status = 'ok';
+        result.data = response;
+        return result;
+  })
+  .catch(function(error) {
+      result.status = 'error';
+      result.data = error;
+      return result;
+  });
 }

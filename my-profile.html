@@ -8,22 +8,6 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -44,16 +28,78 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" id="login_menu">
           </li>
         </ul>
       </div>
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div class="container justify-content-center">
+      <div class="row">
+        <div class="col-10 p-4">
+          <h2>Perfil</h2>
+        </div>
+        <div class="col-2 p-4">
+          <img alt="Foto de perfil" class="img-thumbnail" style="width: 200px;" id="imgPerfil">
+        </div>
+          
+        
+
+      </div>
+      <div class="row justify-content-center gx-5">
+        <form method="get" class="row needs-validation gx-5" id="formulario" novalidate autocomplete="off" >
+          <hr>
+          <div class="col-6">
+            <div class="row pb-4">
+              <label for="firstName"> Primer Nombre*</label>
+              <input type="text" class="form-control" id="firstName" value="" name="firstName" required onchange="nameValidation()">
+              <div class="invalid-feedback">
+                Debe ingresar un Nombre.
+              </div>
+            </div>
+            <div class="row pb-4">
+              <label for="firstSurname">Primer Apellido*</label>
+              <input type="text" class="form-control" id="firstSurname" value="" name="firstSurname" required onchange="surnameValidation()">
+              <div class="invalid-feedback">
+                Debe ingresar un Apellido.
+              </div>
+            </div>
+            <div class="row pb-4">
+              <label for="email">Email*</label>
+              <input type="email" class="form-control" id="email" value="" name="email" required onchange="emailValidation()">
+              <div class="invalid-feedback">
+                Debe ingresar un Email.
+              </div>
+            </div>
+            <div class="row pb-4">
+              <label for="phone">Telefono*</label>
+              <input type="text" class="form-control" id="phone" value="" name="phone" required onchange="phoneValidation()">
+              <div class="invalid-feedback">
+                Debe ingresar un numero de teléfono.
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="row pb-4">
+              <label for="secondName">Segundo Nombre</label>
+              <input type="text" class="form-control" id="secondName" value="" name="secondName">
+            </div>
+            <div class="row pb-4">
+              <label for="secondSurname">Segundo Apellido</label>
+              <input type="text" class="form-control" id="secondSurname" value="" name="secondSurname" >
+            </div>
+            <div class="row pb-4">
+              <label for="photo">Foto de perfil</label>
+              <input type="file" class="form-control" id="photo" name="photo" accept="image/png, image/jpeg">
+            </div>
+          </div>
+          <br>
+          <hr>
+          <div class="col">
+            <button type="submit" class="btn btn-primary"> Guardar Cambios</button>
+          </div>
+        </form>
       </div>
     </div>
   </main>
