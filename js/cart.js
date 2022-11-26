@@ -4,29 +4,31 @@ let total = 0;
 
 (function () {
     'use strict'
-  
-    // Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
-    var forms = document.querySelectorAll('.needs-validation');
-    // Bucle sobre ellos y evitar el envío
-    Array.prototype.slice.call(forms)
-      .forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          
-          if(payValidation()){
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false)
-      })
+
+// Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
+var forms = document.querySelectorAll('.needs-validation');
+// Bucle sobre ellos y evitar el envío
+Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+    form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+        }
+        
+        if(payValidation()){
+        event.preventDefault();
+        event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+    }, false)
+    })
     
 })()
 
 document.addEventListener("DOMContentLoaded", function(e){
+    document.getElementById("userID").value = localStorage.getItem("userID");
+    document.getElementById("userName").value = localStorage.getItem("name");
     let cart = localStorage.getItem("cart_"+localStorage.getItem("userID"));
     let cartArray = new Array();
     if(cart!='null'&&cart!=null)
@@ -112,11 +114,12 @@ function calcSubtotalTotal() {
         else{
             subTotal+=parseInt(value[1]);
         }
-      });
+    });
     document.getElementById("costoSubtotal").innerHTML = "USD "+ subTotal;
     calcShippingCost();
     total = subTotal+costoEnvio;
     document.getElementById("costoTotal").innerHTML = "USD "+ total;
+    document.getElementById("totalVenta").value = total;
 
 }
 function calcShippingCost(){
@@ -124,9 +127,9 @@ function calcShippingCost(){
         if(Item.checked){
             costoEnvio = parseInt(subTotal*parseFloat(Item.value));
         }
-      });
-      document.getElementById("costoEnvio").innerHTML = "UDS " + costoEnvio;
-      total = subTotal+costoEnvio;
+    });
+    document.getElementById("costoEnvio").innerHTML = "UDS " + costoEnvio;
+    total = subTotal+costoEnvio;
     document.getElementById("costoTotal").innerHTML = "USD "+ total;
 }
 
@@ -172,7 +175,3 @@ function allValidation(){
 
     return !payValidation() && dirCalle && dirNumero && dirEsquina && shippingType
 }
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }

@@ -54,6 +54,10 @@
         <hr class="my-2" style="height:3px; border: none;">
       </div>
       <form method="get" class="row needs-validation" id="formulario" novalidate autocomplete="off" >
+        
+        <input type="hidden" name="userID" id="userID" value="0">
+        <input type="hidden" name="userName" id="userName" value="0">
+        <input type="hidden" name="total" id="totalVenta" value="0">
         <h4>Tipo de envio</h4>
         <div class="row mx-1">
           <div class="form-check">
@@ -80,14 +84,14 @@
         <div class="row">
           <div class="col-6">
             <label for="direccion">Dirección</label>
-            <input type="text" class="form-control" id="direccion" value="" name="direccion" required>
+            <input type="text" class="form-control" id="direccion" value="" name="userDir" required>
             <div class="invalid-feedback">
               Debe ingresar una direccion.
             </div>
           </div>
           <div class="col-4">
             <label for="numero">Número</label>
-            <input type="number" class="form-control" id="numero" value="" name="numero" required>
+            <input type="number" class="form-control" id="numero" value="" name="userDirNum" required>
             <div class="invalid-feedback">
               Debe ingresar un numero de puerta.
             </div>
